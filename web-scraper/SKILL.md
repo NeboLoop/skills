@@ -271,3 +271,59 @@ Then deliver the clean markdown with metadata header.
 - **deep-research** — scrape multiple sources to build comprehensive research reports
 
 **This skill pairs well with any skill that needs external content as input.** Scrape first, then hand off to the right skill.
+
+---
+
+## Change Detection Binary
+
+This skill includes a compiled binary at `scripts/web-differ` for automated change monitoring. Use it when the user wants to track competitor pages, monitor pricing changes, or detect content updates over time.
+
+### Usage
+
+```
+scripts/web-differ --urls https://competitor.com/pricing https://competitor.com/features
+```
+
+### Arguments
+
+| Flag | Required | Default | Description |
+|------|----------|---------|-------------|
+| `--urls` | yes (or --urls-file) | — | URLs to scrape (one or more) |
+| `--urls-file` | no | — | Read URLs from a file (one per line) |
+| `--cache-dir` | no | `.web-differ-cache` | Where to store previous scrapes for comparison |
+| `--output` | no | stdout | Write JSON output to file |
+| `--no-diff` | no | false | Only scrape, don't compare against cache |
+| `--include-full-text` | no | false | Include full page text in output |
+
+### How It Works
+
+1. First run: scrapes pages, caches content, reports them as "new"
+2. Subsequent runs: scrapes again, compares against cached version via SHA-256 hash
+3. If content changed: outputs a diff showing exactly what was added and removed
+4. Updates the cache with the new content for next comparison
+
+### Output
+
+```json
+{
+  "pages": [{
+    "url": "https://competitor.com/pricing",
+    "changed": true,
+    "diff": {
+      "added_lines": 3,
+      "removed_lines": 1,
+      "changed_sections": [
+        { "type": "removed", "content": "Pro plan: $29/month" },
+        { "type": "added", "content": "Pro plan: $39/month" }
+      ]
+    }
+  }],
+  "summary": {
+    "pages_changed": 1,
+    "pages_unchanged": 0,
+    "pages_new": 0
+  }
+}
+```
+
+The competitive-intel and marketing-manager roles use this binary in their `competitor-alert` and `competitor-scan` workflows.
