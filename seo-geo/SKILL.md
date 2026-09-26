@@ -50,7 +50,7 @@ Ask these questions conversationally. This is a newer topic, so many users won't
 
 ### Step 1: Check Product Marketing Context
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 Understand the business, their target audience, and what topics they want to be the authority on.
@@ -58,8 +58,8 @@ Understand the business, their target audience, and what topics they want to be 
 ### Step 2: Check AI Crawler Access
 Fetch the site's robots.txt:
 ```
-web(action: "navigate", url: "their-site.com/robots.txt")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/robots.txt")
+browser_read()
 ```
 
 Check for these AI crawlers:
@@ -79,8 +79,8 @@ Check for these AI crawlers:
 ### Step 3: Assess Content Citability
 AI models cite content that is structured, specific, and self-contained. Browse key pages:
 ```
-web(action: "navigate", url: "their-site.com/key-page")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/key-page")
+browser_read()
 ```
 
 **Check for citable passages:**
@@ -120,8 +120,8 @@ AI models learn about brands from multiple sources. Assess the brand's AI visibi
 ### Step 5: Check llms.txt Compliance
 llms.txt is an emerging standard that helps AI models understand your site. Check for it:
 ```
-web(action: "navigate", url: "their-site.com/llms.txt")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/llms.txt")
+browser_read()
 ```
 
 **If it doesn't exist, recommend creating one.** An llms.txt file tells AI crawlers:
@@ -170,8 +170,8 @@ For each key topic the business wants to own, check if their content is structur
 ### Step 7: Review Structured Data
 Check if the site uses Schema.org markup that helps AI understand content:
 ```
-web(action: "navigate", url: "their-site.com")
-web(action: "read_page")
+browser_open(url: "https://their-site.com")
+browser_read()
 ```
 
 Look for:

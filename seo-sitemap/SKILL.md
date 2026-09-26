@@ -49,7 +49,7 @@ Ask these questions conversationally. Get the essentials first.
 
 ### Step 1: Check Product Marketing Context
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 Understand the business to know which pages actually matter for their goals.
@@ -57,8 +57,8 @@ Understand the business to know which pages actually matter for their goals.
 ### Step 2: Fetch the Current Sitemap
 Try to access the sitemap at common locations:
 ```
-web(action: "navigate", url: "their-site.com/sitemap.xml")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/sitemap.xml")
+browser_read()
 ```
 
 If not found at `/sitemap.xml`, also check:
@@ -99,8 +99,8 @@ Check the sitemap against XML sitemap standards:
 - Flag any important pages not included
 
 ```
-web(action: "navigate", url: "their-site.com")
-web(action: "read_page")
+browser_open(url: "https://their-site.com")
+browser_read()
 ```
 
 Walk through key navigation paths to discover pages.
@@ -138,8 +138,8 @@ A sitemap index that references multiple sitemaps split by content type:
 ### Step 6: Check robots.txt Reference
 Verify that `robots.txt` includes a `Sitemap:` directive:
 ```
-web(action: "navigate", url: "their-site.com/robots.txt")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/robots.txt")
+browser_read()
 ```
 
 The file should contain:

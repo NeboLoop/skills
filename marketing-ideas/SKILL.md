@@ -50,7 +50,7 @@ Ask: **"What have you already tried, and what happened?"** — so you don't sugg
 Pull existing context from memory so you understand what they're working with:
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need to understand the product, customer, positioning, and goals before generating useful ideas.
@@ -82,8 +82,8 @@ Most users will have an intuitive answer. If they're unsure, ask about their num
 Use Nebo's browser to look at what competitors or similar companies are doing for marketing:
 
 ```
-web(action: "navigate", url: "competitor-website.com")
-web(action: "read_page")
+browser_open(url: "https://competitor-website.com")
+browser_read()
 ```
 
 Check their homepage messaging, blog strategy, social presence, and any visible campaigns. This gives you raw material for ideas that are proven in the market.

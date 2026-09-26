@@ -130,7 +130,7 @@ The key should tell you what's inside without having to read it. Anyone (includi
 When you need something from memory, search with intent:
 
 ```
-agent(resource: "memory", action: "search", query: "brand voice tone")
+recall(query: "brand voice tone")
 ```
 
 **Tips for better searches:**
@@ -151,7 +151,7 @@ Memory compounds in value over time, but only if you maintain it. Old informatio
 
 **To update existing memory:**
 ```
-agent(resource: "memory", action: "store", key: "product/pricing", value: "Updated pricing information", layer: "tacit")
+remember(key: "product/pricing", value: "Updated pricing information", layer: "tacit")
 ```
 
 This overwrites the old value for that key.
@@ -221,9 +221,9 @@ Before finishing this skill, verify:
 2. Ask about their product, customer, and voice (keep it to 5-6 questions)
 3. Save each piece with clear keys:
 ```
-agent(resource: "memory", action: "store", key: "product/description", value: "Project management tool for freelancers who want simplicity", layer: "tacit")
-agent(resource: "memory", action: "store", key: "customer/profile", value: "Solo freelancers and consultants, non-technical, tired of complex tools", layer: "tacit")
-agent(resource: "memory", action: "store", key: "brand/voice", value: "Casual, friendly, no corporate speak. Talk like a helpful friend, not a software company", layer: "tacit")
+remember(key: "product/description", value: "Project management tool for freelancers who want simplicity", layer: "tacit")
+remember(key: "customer/profile", value: "Solo freelancers and consultants, non-technical, tired of complex tools", layer: "tacit")
+remember(key: "brand/voice", value: "Casual, friendly, no corporate speak. Talk like a helpful friend, not a software company", layer: "tacit")
 ```
 4. Start a test: ask the AI to write something and show how it pulls the saved context
 5. Say: "Now every conversation starts with this knowledge. You'll never have to explain your product again — just add the specifics of what you need."
@@ -235,10 +235,10 @@ agent(resource: "memory", action: "store", key: "brand/voice", value: "Casual, f
 **You do:**
 1. Search memory to see what's there:
 ```
-agent(resource: "memory", action: "search", query: "product")
-agent(resource: "memory", action: "search", query: "customer")
-agent(resource: "memory", action: "search", query: "strategy")
-agent(resource: "memory", action: "search", query: "project")
+recall(query: "product")
+recall(query: "customer")
+recall(query: "strategy")
+recall(query: "project")
 ```
 2. Present a memory map showing what's saved
 3. Identify duplicates, outdated items, and things too vague to be useful

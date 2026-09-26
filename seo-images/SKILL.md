@@ -49,7 +49,7 @@ Ask these questions conversationally. Don't dump them all at once.
 
 ### Step 1: Check Product Marketing Context
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 Load existing context to understand what keywords matter and what the business does. This shapes what good alt text looks like.
@@ -57,8 +57,8 @@ Load existing context to understand what keywords matter and what the business d
 ### Step 2: Scan the Pages
 Use Nebo's browser to visit the target pages:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 For each page, identify every image and collect:

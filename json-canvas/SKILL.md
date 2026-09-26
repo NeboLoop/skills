@@ -64,7 +64,7 @@ Listen to what the user describes and identify the type of diagram:
 
 If the user has existing content (a document, a list, notes in memory), read that first:
 ```
-agent(resource: "memory", action: "search", query: "relevant topic")
+recall(query: "relevant topic")
 ```
 
 Use what you find to build the canvas. Don't make the user repeat what they've already told you.
@@ -211,7 +211,7 @@ Canvas files can be opened in Obsidian and other tools that support the JSON Can
 
 If the user wants the canvas stored in memory instead:
 ```
-agent(resource: "memory", action: "store", key: "canvas/[descriptive-name]", value: "The full JSON Canvas content", layer: "working")
+remember(key: "canvas/[descriptive-name]", value: "The full JSON Canvas content", layer: "project")
 ```
 
 ### Step 7: Describe What You Built

@@ -60,16 +60,16 @@ Ask these questions conversationally. Don't dump them all at once — have a rea
 ### Step 1: Check for Existing Context
 Search memory for product marketing context and any previous programmatic SEO work:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "programmatic seo")
+recall(query: "product marketing context")
+recall(query: "programmatic seo")
 ```
 
 If no product marketing context exists, run the **product-marketing-context** skill first.
 
 If the user provides a website, browse it to understand current structure:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 ### Step 2: Identify Content Patterns
@@ -141,12 +141,12 @@ Recommend a phased approach:
 ### Step 8: Store the Strategy
 Save the programmatic SEO plan to memory:
 ```
-agent(resource: "memory", action: "store", key: "seo/programmatic/patterns", value: "Content patterns identified", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/programmatic/template", value: "Template structure", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/programmatic/data_sources", value: "Data source plan", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/programmatic/quality_gates", value: "Quality standards", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/programmatic/rollout_plan", value: "Phased rollout plan", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/programmatic/date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "seo/programmatic/patterns", value: "Content patterns identified", layer: "tacit")
+remember(key: "seo/programmatic/template", value: "Template structure", layer: "tacit")
+remember(key: "seo/programmatic/data_sources", value: "Data source plan", layer: "tacit")
+remember(key: "seo/programmatic/quality_gates", value: "Quality standards", layer: "tacit")
+remember(key: "seo/programmatic/rollout_plan", value: "Phased rollout plan", layer: "tacit")
+remember(key: "seo/programmatic/date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 ---

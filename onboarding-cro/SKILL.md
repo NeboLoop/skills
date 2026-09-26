@@ -57,7 +57,7 @@ Before diving in, understand the product and the current state. Ask these conver
 Pull the stored context so you understand what the product does, who it's for, and what success looks like for customers:
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need to understand the product before you can optimize onboarding.
@@ -89,8 +89,8 @@ If the user isn't sure, help them think through it: *"What's the moment where a 
 Walk through the actual onboarding experience step by step using Nebo's browser:
 
 ```
-web(action: "navigate", url: "the-product-url.com/signup")
-web(action: "read_page")
+browser_open(url: "https://the-product-url.com/signup")
+browser_read()
 ```
 
 Document every step from signup to activation:

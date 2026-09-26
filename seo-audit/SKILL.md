@@ -43,7 +43,7 @@ If the user only provides a URL, that's enough to start. Ask the rest conversati
 
 Check for existing product marketing context in memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to inform the audit — you already know their product, audience, and goals.
@@ -55,8 +55,8 @@ If context exists, use it to inform the audit — you already know their product
 ### Step 1: Get the Website URL
 Ask for the URL if not provided. Validate it's accessible:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 If the site is down or blocked, tell the user immediately. Don't proceed with a broken URL.
@@ -66,26 +66,26 @@ Gather data from multiple pages to get a full picture:
 
 **Homepage:**
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 **Sitemap (check for existence):**
 ```
-web(action: "navigate", url: "their-website.com/sitemap.xml")
-web(action: "read_page")
+browser_open(url: "https://their-website.com/sitemap.xml")
+browser_read()
 ```
 
 **Robots.txt:**
 ```
-web(action: "navigate", url: "their-website.com/robots.txt")
-web(action: "read_page")
+browser_open(url: "https://their-website.com/robots.txt")
+browser_read()
 ```
 
 **Top interior pages** — pick 3-5 from the sitemap or main navigation:
 ```
-web(action: "navigate", url: "their-website.com/about")
-web(action: "read_page")
+browser_open(url: "https://their-website.com/about")
+browser_read()
 ```
 
 Repeat for key product pages, blog posts, and service pages. Prioritize pages linked from the main navigation.

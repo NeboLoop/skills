@@ -53,7 +53,7 @@ Don't ask all of these if the answers are obvious from the spec. Use judgment. I
 
 Pull the spec from memory or file:
 ```
-agent(resource: "memory", action: "search", query: "approved spec")
+recall(query: "approved spec")
 ```
 
 If found, read it thoroughly. If not found, ask the user to provide it or point to a file.
@@ -149,17 +149,17 @@ Re-present the revised plan and confirm again.
 When the user approves the plan, store it in memory and emit the approval event:
 
 ```
-agent(resource: "memory", action: "store", key: "plan/current", value: "Full plan document", layer: "tacit")
-agent(resource: "memory", action: "store", key: "plan/spec_reference", value: "Reference to the spec this plan implements", layer: "tacit")
-agent(resource: "memory", action: "store", key: "plan/task_count", value: "Total number of tasks", layer: "tacit")
-agent(resource: "memory", action: "store", key: "plan/phase_count", value: "Number of phases", layer: "tacit")
-agent(resource: "memory", action: "store", key: "plan/estimate", value: "Effort estimate range", layer: "tacit")
-agent(resource: "memory", action: "store", key: "plan/approved_date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "plan/current", value: "Full plan document", layer: "tacit")
+remember(key: "plan/spec_reference", value: "Reference to the spec this plan implements", layer: "tacit")
+remember(key: "plan/task_count", value: "Total number of tasks", layer: "tacit")
+remember(key: "plan/phase_count", value: "Number of phases", layer: "tacit")
+remember(key: "plan/estimate", value: "Effort estimate range", layer: "tacit")
+remember(key: "plan/approved_date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 Emit the approval event:
 ```
-agent(resource: "event", action: "emit", event: "plan.approved")
+emit_event(source: "plan.approved")
 ```
 
 Tell the user: *"Plan is locked in. Ready to start? I can walk you through task by task."*

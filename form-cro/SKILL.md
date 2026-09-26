@@ -46,7 +46,7 @@ Don't ask all five at once. Start with the URL and goal, then ask follow-ups bas
 Before analyzing the form, understand what the business does and who they're targeting:
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run **product-marketing-context** first. You need to understand the customer and value proposition to evaluate whether the form speaks to the right audience.
@@ -56,8 +56,8 @@ If no context exists, run **product-marketing-context** first. You need to under
 Use the browser to view the actual form:
 
 ```
-web(action: "navigate", url: "the-form-url.com")
-web(action: "read_page")
+browser_open(url: "https://the-form-url.com")
+browser_read()
 ```
 
 If the form is on a landing page, note the surrounding context too — headline, copy, trust signals. These affect form conversion even though they're not part of the form itself.

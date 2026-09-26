@@ -54,8 +54,8 @@ If the user gives a topic and platform, that's enough to start. Don't over-quest
 
 Check memory for existing marketing context so every post sounds like you:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "brand voice")
+recall(query: "product marketing context")
+recall(query: "brand voice")
 ```
 
 If brand context exists, match the tone, vocabulary, and style described there. If it doesn't exist, ask the user: *"Before I write, how would you describe your brand's tone? Casual and funny? Professional and direct? Somewhere in between?"*
@@ -167,8 +167,8 @@ Match the CTA to where the reader is in the funnel:
 
 If the user wants to tap into what's trending, use the browser to check:
 ```
-web(action: "navigate", url: "https://twitter.com/search?q=[topic]&f=live")
-web(action: "read_page")
+browser_open(url: "https://twitter.com/search?q=[topic]&f=live")
+browser_read()
 ```
 
 Look for:

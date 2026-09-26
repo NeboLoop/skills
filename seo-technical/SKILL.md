@@ -41,8 +41,8 @@ That's it. Everything else you discover by checking the site directly.
 
 Navigate to the site's robots.txt file:
 ```
-web(action: "navigate", url: "https://example.com/robots.txt")
-web(action: "read_page")
+browser_open(url: "https://example.com/robots.txt")
+browser_read()
 ```
 
 **What to look for:**
@@ -63,8 +63,8 @@ web(action: "read_page")
 
 Navigate to the sitemap:
 ```
-web(action: "navigate", url: "https://example.com/sitemap.xml")
-web(action: "read_page")
+browser_open(url: "https://example.com/sitemap.xml")
+browser_read()
 ```
 
 If not found, try common locations:
@@ -93,13 +93,13 @@ If not found, try common locations:
 
 Check that the site uses HTTPS and has proper security headers:
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 Also try the HTTP version to check redirects:
 ```
-web(action: "navigate", url: "http://example.com")
+browser_open(url: "http://example.com")
 ```
 
 **What to look for:**
@@ -121,8 +121,8 @@ web(action: "navigate", url: "http://example.com")
 
 Visit the homepage and several key pages:
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 **What to look for:**
@@ -145,8 +145,8 @@ web(action: "read_page")
 
 Load the site and check for mobile considerations:
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 **What to look for:**
@@ -172,8 +172,8 @@ web(action: "read_page")
 Check the page's performance indicators. Explain each metric in simple terms.
 
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 Look at the page's structure for common performance issues and check the source for heavy resources.
@@ -215,8 +215,8 @@ Look at the page's structure for common performance issues and check the source 
 
 Browse several pages on the site to evaluate URL patterns:
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 Follow internal links to understand the URL structure across the site.
@@ -243,8 +243,8 @@ Follow internal links to understand the URL structure across the site.
 
 While browsing the site, pay attention to how pages link to each other:
 ```
-web(action: "navigate", url: "https://example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 
 Check the navigation, footer, and in-content links across several pages.

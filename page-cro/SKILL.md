@@ -46,7 +46,7 @@ Don't ask all five at once. Start with the URL and goal, then ask follow-ups as 
 Before looking at the page, understand the business:
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to evaluate whether the page matches the product's positioning, target customer, and brand voice.
@@ -60,9 +60,9 @@ If they want context first, run the **product-marketing-context** skill. Otherwi
 Use Nebo's browser to visit and capture the page:
 
 ```
-web(action: "navigate", url: "the-page-url.com")
-web(action: "screenshot")
-web(action: "read_page")
+browser_open(url: "https://the-page-url.com")
+browser_act(action: "screenshot")
+browser_read()
 ```
 
 Take screenshots at multiple scroll positions to see the full page. Pay attention to:

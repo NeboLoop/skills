@@ -46,7 +46,7 @@ Before applying any principles, understand the situation. Ask conversationally:
 
 If marketing context exists in memory, pull it:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 Use the customer profile, positioning, and voice to tailor recommendations.

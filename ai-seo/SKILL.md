@@ -59,7 +59,7 @@ Ask these questions conversationally. AI SEO is new territory for most people, s
 ### Step 1: Check Marketing Context
 Pull the user's product marketing context from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If none exists, run **product-marketing-context** first. You need to know the product, audience, and positioning before optimizing for AI.
@@ -68,8 +68,8 @@ If none exists, run **product-marketing-context** first. You need to know the pr
 Check how AI systems currently perceive the brand. Use the browser to test:
 
 ```
-web(action: "navigate", url: "https://www.perplexity.ai")
-web(action: "search", query: "best [category] tools")
+browser_open(url: "https://www.perplexity.ai")
+search_web(queries: ["best [category] tools"])
 ```
 
 Test these queries across AI tools (where accessible):

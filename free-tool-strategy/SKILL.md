@@ -51,7 +51,7 @@ Before designing a free tool, you need to understand the business. Ask these con
 ### Step 1: Check Product Marketing Context
 Pull your existing marketing context from memory so the tool aligns with your brand, audience, and goals:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need to know who you're building for before you design anything.
@@ -65,8 +65,8 @@ The best free tools solve a problem your audience already deals with repeatedly.
 
 Use Nebo's browser to research what competitors offer as free tools:
 ```
-web(action: "navigate", url: "competitor-website.com/resources")
-web(action: "read_page")
+browser_open(url: "https://competitor-website.com/resources")
+browser_read()
 ```
 
 Search for "[your industry] free tool" and "[your industry] calculator" to see what already exists. Your tool needs to be better, simpler, or cover a gap.

@@ -54,7 +54,7 @@ Don't ask all of these at once. Start with the URL (question 1), walk through th
 ### Step 1: Check Product Marketing Context
 Pull existing knowledge about the product so your recommendations fit the brand and audience:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need to understand who the customer is and what they care about before you can optimize a signup flow for them.
@@ -62,8 +62,8 @@ If no context exists, run the **product-marketing-context** skill first. You nee
 ### Step 2: Load the Signup Page
 Use Nebo's browser to visit the signup page and experience it firsthand:
 ```
-web(action: "navigate", url: "their-signup-url.com/signup")
-web(action: "read_page")
+browser_open(url: "https://their-signup-url.com/signup")
+browser_read()
 ```
 
 Look at the page as a first-time visitor would. Note your immediate impressions:
@@ -74,8 +74,8 @@ Look at the page as a first-time visitor would. Note your immediate impressions:
 ### Step 3: Map Every Step of the Current Flow
 Walk through the entire signup process step by step using the browser:
 ```
-web(action: "navigate", url: "their-signup-url.com/signup")
-web(action: "screenshot")
+browser_open(url: "https://their-signup-url.com/signup")
+browser_act(action: "screenshot")
 ```
 
 Document each step:

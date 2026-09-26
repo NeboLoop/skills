@@ -52,7 +52,7 @@ Before designing or improving a paywall, understand the situation. Ask these con
 
 Pull in what you already know about the product, customer, and positioning:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 This gives you the value proposition, ideal customer, and brand voice — all of which shape how the paywall should read and feel.
@@ -63,8 +63,8 @@ If no context exists, run **product-marketing-context** first.
 
 If the user shares a URL or screenshot, review it:
 ```
-web(action: "navigate", url: "their-app.com/upgrade")
-web(action: "read_page")
+browser_open(url: "https://their-app.com/upgrade")
+browser_read()
 ```
 
 Look for these common problems:

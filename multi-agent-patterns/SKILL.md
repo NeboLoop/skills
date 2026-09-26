@@ -134,9 +134,9 @@ Sub-agents can search Nebo's memory for context they need. This means you don't 
 
 When setting up a sub-agent, tell it what to look for:
 ```
-agent(resource: "memory", action: "search", query: "product description")
-agent(resource: "memory", action: "search", query: "brand voice")
-agent(resource: "memory", action: "search", query: "customer profile")
+recall(query: "product description")
+recall(query: "brand voice")
+recall(query: "customer profile")
 ```
 
 This is why the memory-best-practices skill matters. Well-organized memory makes multi-agent work dramatically easier.
@@ -158,7 +158,7 @@ If something isn't right, you can re-run just that sub-agent with better instruc
 After a multi-agent project, save the pattern that worked:
 
 ```
-agent(resource: "memory", action: "store", key: "workflow/product-launch", value: "Used supervisor pattern with 3 sub-agents: research, email copy, social. Worked well. Next time also add landing page agent.", layer: "tacit")
+remember(key: "workflow/product-launch", value: "Used supervisor pattern with 3 sub-agents: research, email copy, social. Worked well. Next time also add landing page agent.", layer: "tacit")
 ```
 
 Next time you do something similar, you (or the AI) can pull up the pattern and improve on it.

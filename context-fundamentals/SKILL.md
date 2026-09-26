@@ -91,9 +91,9 @@ Help the user save their most important context to memory right now. Start with:
 3. How they want to sound (casual, professional, technical, friendly)
 
 ```
-agent(resource: "memory", action: "store", key: "product/description", value: "One-sentence description", layer: "tacit")
-agent(resource: "memory", action: "store", key: "customer/profile", value: "Ideal customer description", layer: "tacit")
-agent(resource: "memory", action: "store", key: "brand/voice", value: "Preferred tone and style", layer: "tacit")
+remember(key: "product/description", value: "One-sentence description", layer: "tacit")
+remember(key: "customer/profile", value: "Ideal customer description", layer: "tacit")
+remember(key: "brand/voice", value: "Preferred tone and style", layer: "tacit")
 ```
 
 ### Step 6: Build the Habit

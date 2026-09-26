@@ -54,7 +54,7 @@ Ask these questions conversationally, not all at once. Adapt based on what the u
 ### Step 1: Check Product Marketing Context
 Before planning any launch, pull in the marketing foundation:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run **product-marketing-context** first. You need positioning, customer profile, and brand voice before you can plan a launch that lands.

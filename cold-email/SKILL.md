@@ -51,7 +51,7 @@ Don't ask all of these at once. If the user gives you a name and company, start 
 
 Pull your product context from memory so the email reflects your actual positioning:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, tell the user: *"I don't have your product context saved yet. Let me ask a few quick questions so I can write emails that sound like you."* Then run the **product-marketing-context** skill first.
@@ -76,13 +76,13 @@ Map the pain point to a specific, concrete scenario. Not "they struggle with eff
 
 If the user gave you a specific company or person, use Nebo's browser to learn about them:
 ```
-web(action: "navigate", url: "https://www.linkedin.com/company/[company]")
-web(action: "read_page")
+browser_open(url: "https://www.linkedin.com/company/[company]")
+browser_read()
 ```
 
 ```
-web(action: "navigate", url: "[company-website]")
-web(action: "read_page")
+browser_open(url: "https://[company-website]")
+browser_read()
 ```
 
 Look for:
