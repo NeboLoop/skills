@@ -59,7 +59,7 @@ Before creating any material, you need to understand the situation. Ask conversa
 
 Always start by pulling the existing product marketing context:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need positioning, differentiation, customer profile, and brand voice before creating any sales material.

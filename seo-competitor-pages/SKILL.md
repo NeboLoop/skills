@@ -56,7 +56,7 @@ Ask these questions conversationally. You need to understand both the user's pro
 ### Step 1: Check Marketing Context
 Pull the user's product marketing context from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If none exists, run **product-marketing-context** first. You cannot write honest comparison content without deeply understanding the user's own product and positioning.
@@ -65,8 +65,8 @@ If none exists, run **product-marketing-context** first. You cannot write honest
 For each competitor, use the browser to gather current information:
 
 ```
-web(action: "navigate", url: "competitor-website.com")
-web(action: "read_page")
+browser_open(url: "https://competitor-website.com")
+browser_read()
 ```
 
 Gather:

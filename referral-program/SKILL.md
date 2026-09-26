@@ -52,7 +52,7 @@ Before designing a referral program, you need to understand the business. Ask th
 Before designing anything, pull in what you already know about the business:
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to inform the program design — especially pricing, customer profile, and brand voice.

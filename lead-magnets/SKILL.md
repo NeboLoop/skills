@@ -55,7 +55,7 @@ If product-marketing-context exists in memory, skip questions that are already a
 ### Step 1: Check Product Marketing Context
 Pull existing context from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to pre-fill what you know about the product, customer, and positioning. If it doesn't exist, gather enough to proceed — but recommend running the product-marketing-context skill afterward for a complete foundation.

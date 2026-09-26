@@ -41,15 +41,15 @@ Before designing any popup, you need to understand:
 ### From Nebo Tools
 Check for existing product marketing context:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use the brand voice, customer profile, and current goals to inform the popup design. If it doesn't exist, run the **product-marketing-context** skill first.
 
 If the user has a live site, check what popups are already running:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 Look for existing popups, overlays, banners, and slide-ins. Note what they say, when they appear, and whether they feel intrusive.
@@ -62,7 +62,7 @@ Look for existing popups, overlays, banners, and slide-ins. Note what they say, 
 
 Pull context from memory to understand the brand, customer, and goals:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 You need to know:

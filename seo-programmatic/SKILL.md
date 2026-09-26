@@ -56,7 +56,7 @@ Ask these questions conversationally. Don't dump them all at once.
 ### Step 1: Check Marketing Context
 Pull the user's product marketing context from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If none exists, run **product-marketing-context** first. You need to understand the business before building pages at scale.

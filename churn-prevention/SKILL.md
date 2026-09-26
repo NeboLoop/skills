@@ -58,7 +58,7 @@ Ask these questions conversationally. Don't dump them all at once — have a rea
 
 Pull existing context from memory to understand the product, pricing, and customer profile:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 You need to understand:
@@ -73,8 +73,8 @@ If no context exists, tell the user: *"Before we work on churn prevention, I nee
 
 If the user has a live product, use Nebo's browser to walk through the actual cancel experience:
 ```
-web(action: "navigate", url: "their-app.com/settings")
-web(action: "read_page")
+browser_open(url: "https://their-app.com/settings")
+browser_read()
 ```
 
 Document each step:
@@ -186,11 +186,11 @@ For each at-risk signal, design an automatic response:
 
 Store the churn prevention plan in memory:
 ```
-agent(resource: "memory", action: "store", key: "retention/cancel_flow", value: "Cancel flow design", layer: "tacit")
-agent(resource: "memory", action: "store", key: "retention/dunning_sequence", value: "Dunning email sequence", layer: "tacit")
-agent(resource: "memory", action: "store", key: "retention/churn_signals", value: "Leading indicators list", layer: "tacit")
-agent(resource: "memory", action: "store", key: "retention/reengagement_triggers", value: "Trigger-action pairs", layer: "tacit")
-agent(resource: "memory", action: "store", key: "retention/plan_date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "retention/cancel_flow", value: "Cancel flow design", layer: "tacit")
+remember(key: "retention/dunning_sequence", value: "Dunning email sequence", layer: "tacit")
+remember(key: "retention/churn_signals", value: "Leading indicators list", layer: "tacit")
+remember(key: "retention/reengagement_triggers", value: "Trigger-action pairs", layer: "tacit")
+remember(key: "retention/plan_date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 ---
@@ -279,8 +279,8 @@ Before finalizing the churn prevention plan, verify:
 
 2. Use browser to walk through the current cancel flow:
    ```
-   web(action: "navigate", url: "app.example.com/settings/billing")
-   web(action: "read_page")
+   browser_open(url: "https://app.example.com/settings/billing")
+   browser_read()
    ```
    Confirmed: Settings > Billing > "Cancel Subscription" button > immediate cancellation. No survey. No offer. No confirmation screen.
 

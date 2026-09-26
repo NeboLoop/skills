@@ -35,7 +35,7 @@ Before starting, you need:
 
 If the user has product-marketing-context stored in memory, pull it automatically:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 Use that context to understand the brand voice and audience without asking again.
@@ -47,8 +47,8 @@ Use that context to understand the brand voice and audience without asking again
 ### Step 1: Load and Read the Page
 Navigate to the URL and capture the full content:
 ```
-web(action: "navigate", url: "target-page-url")
-web(action: "read_page")
+browser_open(url: "https://target-page-url")
+browser_read()
 ```
 
 If the page requires JavaScript rendering, wait for it to load fully. Capture:

@@ -51,8 +51,8 @@ Before writing a single headline, you need to understand these things. Ask conve
 
 Pull your stored product and brand information from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "brand voice")
+recall(query: "product marketing context")
+recall(query: "brand voice")
 ```
 
 If no context exists, tell the user: *"Before writing ads, I need to understand your product and who you're selling to. Let's set that up first."* Then run **product-marketing-context**.
@@ -126,8 +126,8 @@ For visual platforms (Meta, LinkedIn, Display, YouTube), suggest creative direct
 
 Use Nebo's browser to check what competitors are running for inspiration:
 ```
-web(action: "navigate", url: "https://www.facebook.com/ads/library/")
-web(action: "read_page")
+browser_open(url: "https://www.facebook.com/ads/library/")
+browser_read()
 ```
 
 Don't copy competitors — use their ads to find gaps and angles they're missing.

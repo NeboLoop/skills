@@ -51,7 +51,7 @@ Before designing any test, you need to understand the situation. Ask these conve
 
 Before designing a test, understand what you're working with:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If product context exists, use it to inform the hypothesis. Good tests are grounded in an understanding of the customer and the value prop.
@@ -62,8 +62,8 @@ If no context exists, suggest running **product-marketing-context** first: *"Bef
 
 If the user provides a URL, look at what's there now:
 ```
-web(action: "navigate", url: "their-page.com")
-web(action: "read_page")
+browser_open(url: "https://their-page.com")
+browser_read()
 ```
 
 Understanding the current experience helps you design a meaningful variant, not just a random change.

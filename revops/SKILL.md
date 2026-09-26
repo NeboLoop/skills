@@ -60,7 +60,7 @@ Ask these questions conversationally, not as a checklist. Group them naturally.
 ### Step 1: Check Product Marketing Context
 Before building the pipeline, check if product marketing context exists:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to inform customer profile, pricing, and deal size for the pipeline design.

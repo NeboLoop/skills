@@ -52,7 +52,7 @@ Ask these questions conversationally before diving into setup:
 
 Pull your existing marketing context to understand what you're trying to achieve:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 The marketing goals and ideal customer profile tell us what events matter most. A SaaS focused on trial signups needs different tracking than an e-commerce store optimizing for purchases.
@@ -157,8 +157,8 @@ Provide a filled-in template for each channel the user is actively using.
 
 Use the browser to check that tracking is actually working:
 ```
-web(action: "navigate", url: "their-site.com")
-web(action: "read_page")
+browser_open(url: "https://their-site.com")
+browser_read()
 ```
 
 **Verification checklist:**

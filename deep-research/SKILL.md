@@ -88,7 +88,7 @@ Before starting research, ask the user:
 3. Plan how you'll organize findings (by theme, by source type, chronologically)
 
 **Nebo tools:**
-- Use web(action: search, query: "...") to test queries and see what surfaces
+- Use search_web(queries: ["...", "..."]) to test queries and see what surfaces
 
 **Output:** Search plan with queries and target sources
 
@@ -103,11 +103,11 @@ Before starting research, ask the user:
 - Track citations (URL, title, author, date, key excerpt)
 
 **How to execute:**
-1. For each query, run web(action: search) and review the top 10 results
-2. Navigate to promising sources with web(action: navigate) and web(action: read_page)
+1. For each query, run search_web(queries: [...]) and review the top 10 results
+2. Open promising sources with browser_open(url: "...") and read them with browser_read()
 3. Scroll through articles to find relevant sections
 4. Copy key excerpts with citation info (URL, title, publish date)
-5. Store findings in memory: agent(resource: memory, action: store, key: "research/[topic]/source_[N]", value: "Citation + key excerpts")
+5. Store findings in memory: remember(key: "research/[topic]/source_[N]", value: "Citation + key excerpts", layer: "project")
 
 **Quality bar:**
 - Quick mode: 5-10 sources
@@ -115,11 +115,11 @@ Before starting research, ask the user:
 - Deep mode: 25+ sources
 
 **Nebo tools:**
-- web(action: search, query: "...") — search the web
-- web(action: navigate, url: "...") — open a page
-- web(action: read_page) — read page content
-- web(action: scroll, direction: "down") — scroll to see more
-- agent(resource: memory, action: store, ...) — save findings
+- search_web(queries: ["..."]) — search the web
+- browser_open(url: "...") — open a page
+- browser_read() — read page content
+- browser_act(action: "scroll", direction: "down") — scroll to see more
+- remember(key: "...", value: "...", layer: "project") — save findings
 
 **Output:** Collection of cited excerpts stored in memory
 
@@ -134,7 +134,7 @@ Before starting research, ask the user:
 - Identify consensus vs. contested claims
 
 **How to execute:**
-1. Recall all stored sources: agent(resource: memory, action: search, query: "research/[topic]")
+1. Recall all stored sources: recall(query: "research/[topic]")
 2. Group excerpts by theme or claim
 3. Check for agreement: Do 3+ sources say the same thing? Flag consensus.
 4. Check for disagreement: Do sources contradict? Flag for investigation or note as contested.
@@ -166,7 +166,7 @@ Before starting research, ask the user:
 4. Use citations immediately after claims: "X is the industry standard [3]"
 
 **Nebo tools:**
-- agent(resource: memory, action: recall, ...) — retrieve stored findings
+- recall(query: "research/[topic]") — retrieve stored findings
 
 **Output:** Structured narrative with cited insights
 
@@ -208,8 +208,8 @@ Before starting research, ask the user:
 4. Ensure every major claim has 2-3 citations
 
 **Nebo tools:**
-- web(action: search, ...) — additional research
-- agent(resource: memory, action: store, ...) — save new findings
+- search_web(queries: [...]) — additional research
+- remember(key: "...", value: "...", layer: "project") — save new findings
 
 **Output:** Strengthened, gap-filled report
 
@@ -234,7 +234,7 @@ Before starting research, ask the user:
    - **Methodology Appendix** (how you conducted the research, search queries used, credibility scoring approach)
 
 2. Write the report to a file:
-   - os(resource: file, action: write, path: "~/Documents/[Topic]_Research_Report.md", content: "[full report]")
+   - write_file(path: "~/Documents/[Topic]_Research_Report.md", content: "[full report]")
 
 3. Present the Executive Summary in chat, then tell the user where the full report is saved
 
@@ -247,7 +247,7 @@ Before starting research, ask the user:
 - [ ] Executive Summary is standalone (can be read without the rest)
 
 **Nebo tools:**
-- os(resource: file, action: write, ...) — save report
+- write_file(path: "...", content: "...") — save report
 
 **Output:** Complete markdown report saved to ~/Documents/
 

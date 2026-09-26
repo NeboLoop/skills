@@ -59,8 +59,8 @@ Ask these questions conversationally to understand what schema the site needs.
 ### Step 1: Check for Existing Context
 Search memory for product marketing context and site architecture:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "site architecture")
+recall(query: "product marketing context")
+recall(query: "site architecture")
 ```
 
 If no product marketing context exists, run the **product-marketing-context** skill first. You need to understand the business to generate accurate schema.
@@ -68,8 +68,8 @@ If no product marketing context exists, run the **product-marketing-context** sk
 ### Step 2: Audit Current Schema
 Browse the site to check what structured data already exists:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 Look for:
@@ -161,10 +161,10 @@ Rank schema implementations by which will have the most visible impact in search
 ### Step 8: Store the Plan
 Save the schema implementation plan to memory:
 ```
-agent(resource: "memory", action: "store", key: "seo/schema/types_needed", value: "List of schema types to implement", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/schema/priority_order", value: "Implementation priority", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/schema/current_state", value: "What schema already exists", layer: "tacit")
-agent(resource: "memory", action: "store", key: "seo/schema/date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "seo/schema/types_needed", value: "List of schema types to implement", layer: "tacit")
+remember(key: "seo/schema/priority_order", value: "Implementation priority", layer: "tacit")
+remember(key: "seo/schema/current_state", value: "What schema already exists", layer: "tacit")
+remember(key: "seo/schema/date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 Tell the user: *"I've saved your schema plan. When you add new page types in the future, we can generate the right schema for them."*

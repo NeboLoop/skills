@@ -31,7 +31,7 @@ Before writing anything, you need the design. Get it from one of these sources:
 
 ### From Memory
 ```
-agent(resource: "memory", action: "search", query: "approved design brainstorming")
+recall(query: "approved design brainstorming")
 ```
 
 ### From a File
@@ -152,10 +152,10 @@ If they request changes, make them and present again.
 When the user approves the spec, store it and signal the next skill:
 
 ```
-agent(resource: "memory", action: "store", key: "spec/current", value: "Full spec document", layer: "tacit")
-agent(resource: "memory", action: "store", key: "spec/status", value: "approved", layer: "tacit")
-agent(resource: "memory", action: "store", key: "spec/approved_date", value: "YYYY-MM-DD", layer: "tacit")
-agent(resource: "memory", action: "store", key: "spec/requirements_count", value: "X must-have, Y nice-to-have", layer: "tacit")
+remember(key: "spec/current", value: "Full spec document", layer: "tacit")
+remember(key: "spec/status", value: "approved", layer: "tacit")
+remember(key: "spec/approved_date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "spec/requirements_count", value: "X must-have, Y nice-to-have", layer: "tacit")
 ```
 
 Emit the handoff event:

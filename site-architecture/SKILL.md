@@ -58,8 +58,8 @@ Ask these questions conversationally. Start broad and get specific based on answ
 ### Step 1: Check for Existing Context
 Search memory for product marketing context and any previous site architecture work:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "site architecture")
+recall(query: "product marketing context")
+recall(query: "site architecture")
 ```
 
 If no product marketing context exists, run the **product-marketing-context** skill first. You need to understand the business before organizing its site.
@@ -67,8 +67,8 @@ If no product marketing context exists, run the **product-marketing-context** sk
 ### Step 2: Map the Current Site
 If the user provides a URL, browse the site to understand its current structure:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 Document what you find:
@@ -80,8 +80,8 @@ Document what you find:
 
 Navigate to key sections to understand the full picture:
 ```
-web(action: "navigate", url: "their-website.com/blog")
-web(action: "read_page")
+browser_open(url: "https://their-website.com/blog")
+browser_read()
 ```
 
 ### Step 3: Identify Architecture Issues
@@ -186,12 +186,12 @@ Design how pages connect beyond navigation:
 ### Step 8: Store the Plan
 Save the site architecture plan to memory:
 ```
-agent(resource: "memory", action: "store", key: "site/architecture/hierarchy", value: "Page hierarchy tree", layer: "tacit")
-agent(resource: "memory", action: "store", key: "site/architecture/url_pattern", value: "URL structure recommendation", layer: "tacit")
-agent(resource: "memory", action: "store", key: "site/architecture/navigation", value: "Navigation plan", layer: "tacit")
-agent(resource: "memory", action: "store", key: "site/architecture/linking_strategy", value: "Internal linking plan", layer: "tacit")
-agent(resource: "memory", action: "store", key: "site/architecture/issues", value: "Current issues identified", layer: "tacit")
-agent(resource: "memory", action: "store", key: "site/architecture/date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "site/architecture/hierarchy", value: "Page hierarchy tree", layer: "tacit")
+remember(key: "site/architecture/url_pattern", value: "URL structure recommendation", layer: "tacit")
+remember(key: "site/architecture/navigation", value: "Navigation plan", layer: "tacit")
+remember(key: "site/architecture/linking_strategy", value: "Internal linking plan", layer: "tacit")
+remember(key: "site/architecture/issues", value: "Current issues identified", layer: "tacit")
+remember(key: "site/architecture/date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 Tell the user: *"I've saved your site architecture plan. Other skills like programmatic-seo and schema-markup will reference this when working on your site."*

@@ -55,7 +55,7 @@ Ask these questions conversationally. International SEO has many edge cases, so 
 ### Step 1: Check Marketing Context
 Pull the user's product marketing context from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If none exists and this is a new engagement, run **product-marketing-context** first.
@@ -96,8 +96,8 @@ If hreflang tags already exist, check all three possible locations:
 **Location 1: HTML `<head>` tags**
 Use the browser to check each page:
 ```
-web(action: "navigate", url: "example.com")
-web(action: "read_page")
+browser_open(url: "https://example.com")
+browser_read()
 ```
 Look for: `<link rel="alternate" hreflang="en-us" href="https://example.com/" />`
 
@@ -110,8 +110,8 @@ Link: <https://example.com/>; rel="alternate"; hreflang="en-us"
 **Location 3: XML Sitemap**
 Check the sitemap for hreflang entries:
 ```
-web(action: "navigate", url: "example.com/sitemap.xml")
-web(action: "read_page")
+browser_open(url: "https://example.com/sitemap.xml")
+browser_read()
 ```
 Look for `<xhtml:link rel="alternate" hreflang="en-us" href="..."/>` within `<url>` entries.
 

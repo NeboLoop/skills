@@ -55,7 +55,7 @@ You won't always need to ask all of these. If someone says "grab this article fo
 Navigate to the URL using Nebo's browser:
 
 ```
-web(action: "navigate", url: "https://example.com/article")
+browser_open(url: "https://example.com/article")
 ```
 
 If the page fails to load:
@@ -68,7 +68,7 @@ If the page fails to load:
 Pull the full page content:
 
 ```
-web(action: "read_page")
+browser_read()
 ```
 
 This gives you everything on the page — the content you want plus all the stuff you don't.
@@ -135,7 +135,7 @@ If the user wants images saved:
 3. Present the image list to the user with descriptions
 4. Save images locally if requested:
 ```
-agent(resource: "memory", action: "store", key: "scraped/images/[page-slug]/[image-name]", value: "image URL and description", layer: "working")
+remember(key: "scraped/images/[page-slug]/[image-name]", value: "image URL and description", layer: "project")
 ```
 
 ### Step 7: Deliver or Store the Content
@@ -144,8 +144,8 @@ agent(resource: "memory", action: "store", key: "scraped/images/[page-slug]/[ima
 
 **If saving to memory:**
 ```
-agent(resource: "memory", action: "store", key: "scraped/[domain]/[page-slug]", value: "Full clean markdown content", layer: "working")
-agent(resource: "memory", action: "store", key: "scraped/[domain]/[page-slug]/metadata", value: "Title, author, date, URL", layer: "working")
+remember(key: "scraped/[domain]/[page-slug]", value: "Full clean markdown content", layer: "project")
+remember(key: "scraped/[domain]/[page-slug]/metadata", value: "Title, author, date, URL", layer: "project")
 ```
 
 **If saving to a file:** Write the markdown to a file the user specifies, or suggest a reasonable filename based on the page title.

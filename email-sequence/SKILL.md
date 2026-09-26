@@ -52,7 +52,7 @@ If product-marketing-context exists in memory, skip questions about the product,
 
 Pull the stored context so every email matches your brand:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. Every sequence needs to know: what you sell, who you sell to, what makes you different, and how you talk to people.
@@ -141,12 +141,12 @@ Map these exit conditions explicitly. Nobody should get a "buy now" email the da
 
 Save the complete sequence using Nebo's file tools:
 ```
-file(action: "write", path: "email-sequences/[sequence-name].md", content: "Full sequence document")
+write_file(path: "email-sequences/[sequence-name].md", content: "Full sequence document")
 ```
 
 Also store a reference in memory:
 ```
-agent(resource: "memory", action: "store", key: "email/sequences/[name]", value: "Summary of sequence purpose and status", layer: "tacit")
+remember(key: "email/sequences/[name]", value: "Summary of sequence purpose and status", layer: "tacit")
 ```
 
 ---

@@ -55,7 +55,7 @@ Ask these questions conversationally. Understanding the business is everything â
 
 ### Step 1: Check Product Marketing Context
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If marketing context doesn't exist, run the product-marketing-context skill first. You can't build an SEO plan without knowing the product, customer, and positioning.
@@ -91,8 +91,8 @@ The entire SEO strategy depends on the business model. Determine which type fits
 ### Step 3: Analyze Current State
 Browse the site and assess what exists:
 ```
-web(action: "navigate", url: "their-site.com")
-web(action: "read_page")
+browser_open(url: "https://their-site.com")
+browser_read()
 ```
 
 Check:
@@ -105,12 +105,12 @@ Check:
 
 Also check:
 ```
-web(action: "navigate", url: "their-site.com/robots.txt")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/robots.txt")
+browser_read()
 ```
 ```
-web(action: "navigate", url: "their-site.com/sitemap.xml")
-web(action: "read_page")
+browser_open(url: "https://their-site.com/sitemap.xml")
+browser_read()
 ```
 
 ### Step 4: Define Target Keywords

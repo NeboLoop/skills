@@ -44,8 +44,8 @@ Before diving in, ask a few questions conversationally:
 
 Use Nebo's browser to visit the page:
 ```
-web(action: "navigate", url: "their-page-url.com")
-web(action: "read_page")
+browser_open(url: "https://their-page-url.com")
+browser_read()
 ```
 
 Read the full HTML source. You need the raw markup, not just visible text.

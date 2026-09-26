@@ -57,7 +57,7 @@ Before building any campaign plan, understand these things. Ask conversationally
 
 Before doing anything, pull existing knowledge about the business:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, use it to pre-fill what you already know — product details, ideal customer, pricing, differentiation. Skip questions you already have answers for.
@@ -88,7 +88,7 @@ Each ad platform works best for different situations. Guide the user:
 - Works well for: products with clear search demand, local services, comparison shoppers.
 - Use Nebo's browser to check search volume and competitor ads:
 ```
-web(action: "navigate", url: "https://ads.google.com/home/tools/keyword-planner/")
+browser_open(url: "https://ads.google.com/home/tools/keyword-planner/")
 ```
 
 **Meta Ads (Facebook/Instagram)** — Best when you need to reach people based on interests, behaviors, or demographics, even if they aren't searching right now.
@@ -215,8 +215,8 @@ After the campaign launches, give the user a plan for improving results:
 
 Use Nebo's browser to review the landing page:
 ```
-web(action: "navigate", url: "user-landing-page-url")
-web(action: "read_page")
+browser_open(url: "https://user-landing-page-url")
+browser_read()
 ```
 
 Check that the landing page message matches the ad copy. If the ad promises "free trial" but the landing page says "book a demo," that mismatch will hurt conversions.
@@ -309,7 +309,7 @@ Before delivering the campaign plan, verify:
 
 1. Check memory for product marketing context:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 2. Context found — the product is "TaskFlow," a simple project management tool for freelancers and small teams. $19/month. Differentiation: no learning curve, set up in 2 minutes vs hours for enterprise tools. Goal: more trial signups.
@@ -324,14 +324,14 @@ agent(resource: "memory", action: "search", query: "product marketing context")
 
 7. Review the landing page with Nebo's browser:
 ```
-web(action: "navigate", url: "https://taskflow.com/free-trial")
-web(action: "read_page")
+browser_open(url: "https://taskflow.com/free-trial")
+browser_read()
 ```
 
 8. Research competitor ads:
 ```
-web(action: "navigate", url: "https://google.com/search?q=simple+project+management+tool")
-web(action: "read_page")
+browser_open(url: "https://google.com/search?q=simple+project+management+tool")
+browser_read()
 ```
 
 9. Deliver the campaign plan:

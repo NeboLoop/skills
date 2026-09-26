@@ -63,7 +63,7 @@ Ask these questions conversationally, one at a time. Don't overwhelm with a form
 ### Step 1: Check for Existing Context
 Use Nebo's memory to search for existing product marketing context:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If context exists, read it and ask: *"I have your marketing context from [date]. Has anything changed since then?"*
@@ -85,8 +85,8 @@ Ask the 16 questions above conversationally. Group them naturally:
 
 If the user provides a website, use Nebo's browser to read it:
 ```
-web(action: "navigate", url: "their-website.com")
-web(action: "read_page")
+browser_open(url: "https://their-website.com")
+browser_read()
 ```
 
 Use what you learn from the site to ask smarter follow-up questions.
@@ -110,27 +110,27 @@ If yes → proceed to Step 5
 Save the context to Nebo's persistent memory using these keys:
 
 ```
-agent(resource: "memory", action: "store", key: "product/name", value: "Product Name", layer: "tacit")
-agent(resource: "memory", action: "store", key: "product/description", value: "One-sentence description", layer: "tacit")
-agent(resource: "memory", action: "store", key: "product/problem", value: "Main problem solved", layer: "tacit")
-agent(resource: "memory", action: "store", key: "customer/profile", value: "Ideal customer description", layer: "tacit")
-agent(resource: "memory", action: "store", key: "customer/pain", value: "Specific pain point", layer: "tacit")
-agent(resource: "memory", action: "store", key: "customer/success", value: "Success outcome", layer: "tacit")
-agent(resource: "memory", action: "store", key: "positioning/differentiation", value: "Unique angle", layer: "tacit")
-agent(resource: "memory", action: "store", key: "positioning/competitors", value: "Main alternatives", layer: "tacit")
-agent(resource: "memory", action: "store", key: "positioning/why_us", value: "Why choose us", layer: "tacit")
-agent(resource: "memory", action: "store", key: "pricing/model", value: "Pricing model", layer: "tacit")
-agent(resource: "memory", action: "store", key: "pricing/deal_size", value: "Average deal size", layer: "tacit")
-agent(resource: "memory", action: "store", key: "brand/voice", value: "Voice description", layer: "tacit")
-agent(resource: "memory", action: "store", key: "brand/examples", value: "Example copy", layer: "tacit")
-agent(resource: "memory", action: "store", key: "marketing/goals", value: "Top 3 goals", layer: "tacit")
-agent(resource: "memory", action: "store", key: "marketing/what_works", value: "Successful tactics", layer: "tacit")
-agent(resource: "memory", action: "store", key: "marketing/context_date", value: "YYYY-MM-DD", layer: "tacit")
+remember(key: "product/name", value: "Product Name", layer: "tacit")
+remember(key: "product/description", value: "One-sentence description", layer: "tacit")
+remember(key: "product/problem", value: "Main problem solved", layer: "tacit")
+remember(key: "customer/profile", value: "Ideal customer description", layer: "tacit")
+remember(key: "customer/pain", value: "Specific pain point", layer: "tacit")
+remember(key: "customer/success", value: "Success outcome", layer: "tacit")
+remember(key: "positioning/differentiation", value: "Unique angle", layer: "tacit")
+remember(key: "positioning/competitors", value: "Main alternatives", layer: "tacit")
+remember(key: "positioning/why_us", value: "Why choose us", layer: "tacit")
+remember(key: "pricing/model", value: "Pricing model", layer: "tacit")
+remember(key: "pricing/deal_size", value: "Average deal size", layer: "tacit")
+remember(key: "brand/voice", value: "Voice description", layer: "tacit")
+remember(key: "brand/examples", value: "Example copy", layer: "tacit")
+remember(key: "marketing/goals", value: "Top 3 goals", layer: "tacit")
+remember(key: "marketing/what_works", value: "Successful tactics", layer: "tacit")
+remember(key: "marketing/context_date", value: "YYYY-MM-DD", layer: "tacit")
 ```
 
 Also save a full-text version for reference:
 ```
-agent(resource: "memory", action: "store", key: "product/marketing_context_full", value: "Full context document", layer: "tacit")
+remember(key: "product/marketing_context_full", value: "Full context document", layer: "tacit")
 ```
 
 ### Step 6: Confirm Next Steps

@@ -64,7 +64,7 @@ Ask these questions conversationally. Don't dump them all at once.
 Always start here. You need to understand the product, customer, and positioning before pricing.
 
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
+recall(query: "product marketing context")
 ```
 
 If no context exists, run the product-marketing-context skill first. Pricing without positioning is guessing.
@@ -98,8 +98,8 @@ Ask: *"When your customers get more value from your product, what number goes up
 Use Nebo's browser to research how competitors and alternatives price:
 
 ```
-web(action: "navigate", url: "competitor-pricing-page.com/pricing")
-web(action: "read_page")
+browser_open(url: "https://competitor-pricing-page.com/pricing")
+browser_read()
 ```
 
 For each competitor, capture:

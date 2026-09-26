@@ -53,9 +53,9 @@ If product-marketing-context exists in memory, pull questions 2-4 from there and
 ### Step 1: Check Product Marketing Context
 Pull your positioning, differentiation, and competitor list from memory:
 ```
-agent(resource: "memory", action: "search", query: "product marketing context")
-agent(resource: "memory", action: "search", query: "positioning/competitors")
-agent(resource: "memory", action: "search", query: "positioning/differentiation")
+recall(query: "product marketing context")
+recall(query: "positioning/competitors")
+recall(query: "positioning/differentiation")
 ```
 
 If no context exists, run the **product-marketing-context** skill first. You need solid positioning before writing comparison content.
@@ -63,10 +63,10 @@ If no context exists, run the **product-marketing-context** skill first. You nee
 ### Step 2: Research Each Competitor
 Use the browser to gather current information on each competitor:
 ```
-web(action: "navigate", url: "competitor-website.com")
-web(action: "read_page")
-web(action: "navigate", url: "competitor-website.com/pricing")
-web(action: "read_page")
+browser_open(url: "https://competitor-website.com")
+browser_read()
+browser_open(url: "https://competitor-website.com/pricing")
+browser_read()
 ```
 
 For each competitor, document:
@@ -79,8 +79,8 @@ For each competitor, document:
 
 Also check review sites:
 ```
-web(action: "navigate", url: "g2.com/products/[competitor]/reviews")
-web(action: "read_page")
+browser_open(url: "https://g2.com/products/[competitor]/reviews")
+browser_read()
 ```
 
 ### Step 3: Build the Feature Comparison Matrix
