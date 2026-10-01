@@ -55,12 +55,18 @@ For a plain internal tool (a tracker, a form, a table the owner fills in),
 | 6 | Gate | `scripts/gate.js` passes | zero failures |
 | 7 | Publish | App Developer mode, Publish | the owner says yes |
 
-### Before anything: you are the app
+### Before anything: whose app is it?
 
-If the owner asks you for the app, you become it: make yourself an app with
-`update_employee` on your own name (see `references/nebo-app.md`), never a
-second "<name> App" employee unless they ask for one. Then build into your
-own folder, reload as you go, and publish yourself.
+An app can be built two ways (details in `references/nebo-app.md`):
+
+- **You become the app** when the owner puts it on you ("you are the app",
+  "let's build you"): `update_employee` on your own name. You keep your chat,
+  memory and persona, they can talk to you while the page reloads, and you
+  can publish yourself.
+- **A new app employee** when they ask for an app as a separate thing, or it
+  is another employee's job: `create_employee`.
+- **Not clear?** Add it to the intake: "Should I become this app, or build it
+  as a new one?"
 
 ### 0. Intake (one round)
 
