@@ -185,8 +185,9 @@ its time.
 
 ## When there is no encoder: WebP sequence on a canvas
 
-If `generate_media` reports it wrote a frame sequence (or you split one
-yourself: `ffmpeg -i raw.mp4 -vf "fps=24,scale=1280:-2" ui/assets/frames/%04d.webp`),
+If `generate_media` reports the film was not re-encoded for scrubbing
+(no ffmpeg on the bot), draw it as a frame sequence instead (split one
+where ffmpeg exists: `ffmpeg -i raw.mp4 -vf "fps=24,scale=1280:-2" ui/assets/frames/%04d.webp`),
 draw frames on a canvas instead:
 
 ```js

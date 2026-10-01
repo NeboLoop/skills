@@ -151,10 +151,14 @@ and load libraries from the CDN lines in `kit.md`.
 **React or three with React** builds the same way with an entry
 `src/main.jsx`; bun handles JSX.
 
-## App Developer mode tools
+## Developer tools
 
-Offered when the owner has App Developer mode on (Bot settings, Developer)
-and you are the app's employee or its teammate:
+An app the owner made (on this bot, not installed from the marketplace)
+always has these tools for ITSELF, with no setting: leave `app` out when
+you are the app. App Developer mode (Bot settings, Developer) opens them to
+teammates on any of the owner's apps, adds the floating console to the page,
+and serves app files with nothing cached. An app installed from the
+marketplace never gets them, mode or not.
 
 - `app_reload(app)`: every open view of the app (phone, desktop window,
   browser) reloads. Use after every build.
@@ -168,17 +172,22 @@ and you are the app's employee or its teammate:
   file. Use it to check screens against the boards.
 - `app_listing` / `app_submit`: publishing with the owner (below).
 
-Without the mode, ask the owner to open the app and tell you what they
-see, or to turn the mode on.
+If you are working on another employee's app and the tools refuse, ask the
+owner to turn App Developer mode on, or to open the app and tell you what
+they see.
 
 ## What a page can carry
 
 - Images (`png jpg webp avif gif svg`), fonts (`woff2 woff ttf otf`), video
   (`mp4 webm mov`), sound (`mp3 wav ogg m4a`), 3D (`glb gltf`), `wasm`,
-  `js mjs css html json`. Each is served with its real content type, and
+  `js mjs css html json`. A file with another extension is served as
+  `application/octet-stream` and the browser will not use it. Each is served with its real content type, and
   video and sound answer range requests, so seeking works.
-- **At most 10 MB per file and 50 MB for the whole `ui/`**, or it cannot be
-  published. A file past the limit is refused at publish.
+- **At most 10 MB per file and 50 MB for the whole package**, or it cannot
+  be published: the publish refuses a file past the limit, and the
+  marketplace skips any page file over 10 MB. The gate checks both.
+- Anything else in `ui/` of another type, dot files and `node_modules/` are
+  dropped at publish.
 - Video plays inline on the phone: `<video muted playsinline>` (plus
   `autoplay loop` for a loop). Setting `currentTime` from scroll scrubs it;
   follow `film-scrub.md`.
@@ -205,8 +214,12 @@ the protocol so the page survives a reconnect (resend its state on open).
 
 ## Publishing
 
-Only when the owner asks. With App Developer mode on, the app's chat has a
-**Publish** button; follow the bundled `publish-an-app` skill. It builds the
-bundle (AGENT.md, agent.json, manifest.json and `ui/`, never `src/`,
-`refs/` or `brief.md`), drafts the listing, takes the screenshots, and the
-owner sends it with one tap. Never submit on your own.
+Only when the owner asks ("publish yourself", or the **Publish** button: in
+the app's chat, on the phone's app screen, or **Publish This App…** in the
+desktop menu). Follow the bundled `publish-an-app` skill: `app_listing`
+drafts the listing, `app_screenshot` (for_listing: true) takes 3 to 5
+screenshots, then `app_submit`. The bundle is AGENT.md, agent.json,
+manifest.json, `ui/` and your own skills under `skills/<name>/`, never
+`src/`, `refs/` or `brief.md`. The owner sends it by answering the card in
+the chat (voice can answer it). Never submit on your own. Delete
+`ui/boards/` first; the gate refuses while it exists.
