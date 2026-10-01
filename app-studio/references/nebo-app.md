@@ -152,6 +152,27 @@ nebo.storage.onChange((c) => { if (c.keys.includes('contacts')) load(); });
   is itself JSON (`"42"`, `"true"`) comes back parsed. Store such values
   inside an object.
 
+Judgments over that data: your `decide` tool (load it with `find_tools`)
+takes the same request as the page's `nebo.decide`. Read records with
+`app_data`, then ask typed questions about them in one fast call:
+
+```
+decide(state: <records from app_data>, questions: {
+  "tier":  { "type": "choice", "instructions": "How warm is this lead, judging by `status`?",
+             "criteria": { "hot": "ready to buy", "warm": "interested", "cold": "not now", "other": "can't tell" } },
+  "reply": { "type": "noul", "instructions": "`status` asks us for a reply." } })
+```
+
+- `choice`: 2 to 255 named options, with an escape option when the list is
+  not complete; `score`: 2 to 10 ordered levels, lowest first, answered as a
+  fraction; `noul`: one statement, answered as the probability it holds.
+- The whole question lives in `instructions`; name the state's fields in
+  backticks and keep the state to what the questions need (very long state
+  is shortened in the middle).
+- Counting, dates and thresholds stay in your own steps. Every decision is
+  billed to the owner like any model call, so do not loop it over every
+  record on every turn.
+
 Cards: your `a2ui` tool can show a card on the page (it arrives over
 `surfaces.connect()`; the page bundles an `@a2ui/web_core` renderer and calls
 `nebo.a2ui.init`). A click comes back to you. A page opened later does not
