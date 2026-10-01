@@ -55,6 +55,13 @@ For a plain internal tool (a tracker, a form, a table the owner fills in),
 | 6 | Gate | `scripts/gate.js` passes | zero failures |
 | 7 | Publish | App Developer mode, Publish | the owner says yes |
 
+### Before anything: you are the app
+
+If the owner asks you for the app, you become it: make yourself an app with
+`update_employee` on your own name (see `references/nebo-app.md`), never a
+second "<name> App" employee unless they ask for one. Then build into your
+own folder, reload as you go, and publish yourself.
+
 ### 0. Intake (one round)
 
 Ask everything in ONE message, then never ask again. Always ask:
