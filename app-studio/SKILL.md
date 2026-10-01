@@ -149,7 +149,10 @@ layout, the build command, the SDK, the manifest and the developer tools:
 The page's `storage` is also yours: read, search and change it with
 `app_data`, and have the page redraw on `nebo.storage.onChange`, so what the
 owner tells you shows on the page and what they type there is what you find
-(`references/nebo-app.md`, "The app's data is yours too").
+(`references/nebo-app.md`, "The app's data is yours too"). For judgments
+over that data (which lead is hot, which category, how urgent) use your
+`decide` tool, or `nebo.decide` from the page, rather than a prose model
+call.
 
 Build each screen to its board: reread the board, extract type ratios,
 spacing logic, color placement and component shapes, then code it.
