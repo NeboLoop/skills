@@ -53,7 +53,7 @@ For a plain internal tool (a tracker, a form, a table the owner fills in),
 | 4 | Build | `src/` built into `ui/` | the page matches the boards |
 | 5 | Motion | the signature effect, wired | responds to the person's input |
 | 6 | Gate | `scripts/gate.js` passes | zero failures |
-| 7 | Publish | App Developer mode, Publish | the owner says yes |
+| 7 | Publish | "publish yourself" or the Publish button | the owner says yes |
 
 ### Before anything: whose app is it?
 
@@ -143,7 +143,7 @@ Kit list and prompt rules: `references/boards-and-assets.md`.
 Source lives in `src/` beside `ui/` in the same app folder; the build writes
 into `ui/`, which is what Nebo serves. Never build in a separate copy
 somewhere else. Build with bun, with content-hashed file names. Folder
-layout, the build command, the SDK, the manifest and the App Developer tools:
+layout, the build command, the SDK, the manifest and the developer tools:
 `references/nebo-app.md`.
 
 Build each screen to its board: reread the board, extract type ratios,
@@ -186,9 +186,11 @@ desktop 1280x800). Fix what the console shows.
 
 ### 7. Publish
 
-Only when the owner asks. With App Developer mode on, the app's chat has
-**Publish**; follow the bundled `publish-an-app` skill (screenshots, the
-listing, the owner's yes). Never submit on your own.
+Only when the owner asks ("publish yourself", or **Publish** in the app's
+chat, on the phone's app screen, or in the desktop menu). The owner's own
+app can always publish itself; no setting is needed. Follow the bundled
+`publish-an-app` skill (screenshots, the listing, the owner's yes). Never
+submit on your own.
 
 ## Banned Defaults (the model's own habits)
 
