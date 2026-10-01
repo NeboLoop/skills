@@ -146,6 +146,11 @@ somewhere else. Build with bun, with content-hashed file names. Folder
 layout, the build command, the SDK, the manifest and the developer tools:
 `references/nebo-app.md`.
 
+The page's `storage` is also yours: read, search and change it with
+`app_data`, and have the page redraw on `nebo.storage.onChange`, so what the
+owner tells you shows on the page and what they type there is what you find
+(`references/nebo-app.md`, "The app's data is yours too").
+
 Build each screen to its board: reread the board, extract type ratios,
 spacing logic, color placement and component shapes, then code it.
 Craft floor (type, color, hero, layout, copy, states):

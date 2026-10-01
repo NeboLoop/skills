@@ -106,13 +106,58 @@ const { text } = await nebo.agents.invoke('Write a caption for this photo', { da
 const line = await nebo.janus.complete({ messages: [{ role: 'user', content: '...' }] });
 ```
 
-The full table (chat, surfaces, the employee socket, the proxy fetch) is in
-`build-an-app`. Keep every bit of state the owner cares about (progress,
+The full table (chat, surfaces, the employee socket, the proxy fetch,
+`storage.onChange`) is in `build-an-app`. Keep every bit of state the owner cares about (progress,
 settings, saves) in `storage`; the window is closed and reopened, and the
 page is reloaded on every rebuild.
 
 In a bundled build, read it at runtime (`window.NeboAppSDK`); do not import
 a package for it.
+
+## The app's data is yours too
+
+The page's `storage` and your `app_data` tool are one store: the same keys,
+the same values. You have `app_data` because you are an app; it reaches only
+your own app's data, and a coworker who needs it asks you.
+
+```
+app_data(action: "set",    key: "contacts", value: [{ "name": "John Smith", "phone": { "mobile": "+1 555 0100" } }])
+app_data(action: "get",    key: "contacts")
+app_data(action: "query",  where: { "name": "john smith" })          // field contains, any case; inside lists item by item
+app_data(action: "query",  where: { "phone.mobile": "0100" })        // dotted paths
+app_data(action: "query",  text: "smith", prefix: "contact:", limit: 5)
+app_data(action: "list",   prefix: "contact:")
+app_data(action: "delete", key: "draft")
+```
+
+- Load it with `find_tools` if it is not in your list yet.
+- `limit` defaults to 20, at most 100; `total` in the answer counts every
+  match, so you know when you saw only part.
+- `text` matches the record's whole JSON text (field names included), as
+  one phrase.
+- After a `set` or `delete` every open view of the app hears it. Write the
+  page so it redraws:
+
+```js
+async function load() { render((await nebo.storage.getItem('contacts')) ?? []); }
+load();
+nebo.storage.onChange((c) => { if (c.keys.includes('contacts')) load(); });
+// c = { appId, keys, action: 'set' | 'delete', source: 'employee' | 'page' }
+```
+
+- Pick keys you and the page both find: one key holding a list
+  (`contacts`), or one key per record under a prefix (`contact:<id>`). Write
+  the shape into your own instructions so later turns use the same keys.
+- `getItem` returns exactly what `setItem` stored, except that a string which
+  is itself JSON (`"42"`, `"true"`) comes back parsed. Store such values
+  inside an object.
+
+Cards: your `a2ui` tool can show a card on the page (it arrives over
+`surfaces.connect()`; the page bundles an `@a2ui/web_core` renderer and calls
+`nebo.a2ui.init`). A click comes back to you. A page opened later does not
+get earlier cards, so keep what must always show in storage. The SDK's other
+`surfaces` events (`state_snapshot`, `state_delta`, `text_content`, ...) are
+not sent to app pages yet: do not build on them.
 
 ## Building
 
