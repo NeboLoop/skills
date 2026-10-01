@@ -2,22 +2,27 @@
 
 ## Generating
 
-Art, film and sound come from one tool, `generate_media`. It runs through
-Nebo's own inference (billed to the bot's plan), waits on slow jobs, and
-writes the file where you say:
+Art and film come from one tool, `generate_media` (kind `image` or
+`video`). It runs through Nebo's own inference (billed to the bot's plan),
+waits on slow jobs, and writes the file where you say. Its options are flat
+parameters:
 
 ```
-generate_media(kind: "image", prompt: "...", into: "refs/board-hero.png")
-generate_media(kind: "image", prompt: "...", options: { size: "1536x1024" }, into: "ui/assets/hero.webp")
-generate_media(kind: "video", prompt: "...", options: { seconds: 8, image: "ui/assets/hero.webp", scrub: true }, into: "ui/assets/film.mp4")
-generate_media(kind: "audio", prompt: "...", options: { seconds: 2 }, into: "ui/assets/sfx/hit.mp3")
+generate_media(kind: "image", prompt: "...", into: "boards/hero.png")
+generate_media(kind: "image", prompt: "...", size: "1536x1024", output_format: "webp", into: "assets/hero.webp")
+generate_media(kind: "video", prompt: "...", seconds: 8, resolution: "720p", image: "assets/hero.webp", scrub: true, into: "assets/film.mp4")
 ```
 
-- `into` is a path inside the app folder (or the workspace files). The
-  result names the file written.
+- `into` is relative to the app's served folder (the folder `ui/` builds
+  into), so `assets/film.mp4` is served as `assets/film.mp4`. The result
+  names the file written. Pass `app` only when building another app.
 - `scrub: true` re-encodes a film so every frame is a keyframe, which a
-  scroll scrub needs (see `film-scrub.md`). Without an encoder on the bot it
-  writes a WebP frame sequence instead and says so.
+  scroll scrub needs (see `film-scrub.md`). Without ffmpeg on the bot the
+  result says so and keeps the original.
+- A long video that outlives the wait comes back with a job id; call again
+  with `job: "<id>"` to collect it instead of paying for a new one.
+- Sound has no generator yet: build effects in code (Web Audio; see
+  `games.md`) or use the owner's files.
 - Submit independent jobs together; build while they render.
 - You see an image only by reading the file (the vision helper describes
   it). Never paste images into the conversation.
@@ -32,7 +37,7 @@ generate_media(kind: "audio", prompt: "...", options: { seconds: 2 }, into: "ui/
 
 ONE landscape image (16:9 or 3:2) per screen or section, never one tall
 full-page image (detail turns to mush and every screen ends up composed
-alike). Six screens, six boards. Boards go in `refs/`, never `ui/`.
+alike). Six screens, six boards. Boards go in `boards/` (where `generate_media` writes them); delete that folder once the build matches them, the gate refuses to publish while it exists.
 
 ### The combination (commit before prompting)
 

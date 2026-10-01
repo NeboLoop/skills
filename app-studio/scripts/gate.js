@@ -155,6 +155,7 @@ const uiDir = path.join(appDir, 'ui');
 const srcDir = path.join(appDir, 'src');
 const uiFiles = walk(uiDir);
 if (!exists(path.join(uiDir, 'index.html'))) fail('ui/index.html is missing.');
+if (exists(path.join(uiDir, 'boards'))) fail('ui/boards/ is still there: design boards are working files; delete the folder before publishing.');
 
 let total = 0;
 for (const f of uiFiles) {

@@ -46,7 +46,7 @@ the look, not the mechanics.
   payoff.
 - **No text, logos or watermarks in the film.**
 
-Make it with `generate_media(kind: "video", ..., options: { scrub: true })`,
+Make it with `generate_media(kind: "video", ..., scrub: true)`,
 which encodes it for scrubbing. Generate a 6-keyframe storyboard image
 first (one continuous move laid out as a 6-panel grid, "not six different
 scenes") and pass it as a style reference, not as the first frame. The

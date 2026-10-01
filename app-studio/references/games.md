@@ -120,7 +120,7 @@ about 10 visual assets, up to 2 music loops, about 5 sound effects.
 keep a character identical; a video model animates ONE image, so every
 frame is the same character. Generate a key pose (the action's peak, full
 body, empty margin above and below, on the key color), then
-`generate_media(kind: "video", options: { image: <key pose>, seconds: 4 })`.
+`generate_media(kind: "video", image: "<key pose file>", seconds: 4, into: "assets/...")`.
 Loops pass the same image as first and last frame; one-shot actions
 (attack, death) pass only the first. Then sample frames locally:
 
@@ -156,9 +156,8 @@ normals; set it opaque. Free CC0 sources when nothing is generated: Kenney
 - Music: at most 2 loops. Effects: the main verb, damage or feedback,
   pickup, one environment sound, one ambience. Voice: one voice per
   speaker, short lines.
-- `generate_media(kind: "audio", ...)`; one sound per prompt, and say "no
-  music", "no voice" or "no ambience" when isolation matters. Music prompts
-  name mood, tempo, instruments and "instrumental".
+- There is no audio generator yet. Build effects in code with Web Audio
+  (oscillators, noise, envelopes), or wire in files the owner provides.
 - Normalize before wiring: voice about -6 dBFS, effects -10 to -12, music
   -18 to -20, true peak at most -3. Voice over effects over music.
 - Use `mp3` or `m4a` (iPhone does not play `ogg`). Loops fade at the seam.
