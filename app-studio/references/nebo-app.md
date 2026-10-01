@@ -172,6 +172,13 @@ decide(state: <records from app_data>, questions: {
 - Counting, dates and thresholds stay in your own steps. Every decision is
   billed to the owner like any model call, so do not loop it over every
   record on every turn.
+- If it fails, say so plainly and stop asking: "You've used all the work
+  included in your account..." means nothing more will be answered until the
+  owner adds a plan or credits; "Decisions need NeboAI connected" means the
+  bot is signed out; "Too many decisions at once" can be tried again in a
+  moment. The page's `nebo.decide` throws the same words (HTTP 429, 503,
+  429), a malformed question is 400 with what is wrong, and a service
+  failure is 502.
 
 Cards: your `a2ui` tool can show a card on the page (it arrives over
 `surfaces.connect()`; the page bundles an `@a2ui/web_core` renderer and calls
@@ -289,3 +296,10 @@ manifest.json, `ui/` and your own skills under `skills/<name>/`, never
 `src/`, `refs/` or `brief.md`. The owner sends it by answering the card in
 the chat (voice can answer it). Never submit on your own. Delete
 `ui/boards/` first; the gate refuses while it exists.
+
+After it is published: for a private or loop app, every new bundle is put in
+place on the bots that installed it right away, keeping their settings and
+data, with no version change. A raised version is offered to each owner in
+Settings, Updates (applied at once only where they turned on automatic
+updates). If NeboAI ever withdraws the app, installed bots turn it off and
+keep everything it saved.
