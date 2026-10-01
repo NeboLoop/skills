@@ -6,13 +6,15 @@ adds on top.
 
 ## The app folder
 
-**You are the app by default.** When the owner asks you to build an app
-and you are the employee they are talking to, make yourself the app:
-`update_employee(name: "<your own name>", app: {...}, ui: {"index.html": ...})`
-(a one-file starter page is enough). You keep your chat, memory and persona,
-the owner can talk to you while the page reloads, and you publish yourself at
-the end. Hire a separate app employee with `create_employee` only when the
-owner asks for one or the app is another employee's job. The result gives its id; `app_status` and the line every
+Make the app employee first, one of two ways (a one-file starter page is
+enough either way):
+
+- **Yourself**, when the owner puts the app on you ("you are the app"):
+  `update_employee(name: "<your own name>", app: {...}, ui: {"index.html": ...})`.
+  You stay yourself; the owner can talk to you while the page reloads, and
+  you can publish yourself at the end.
+- **A new employee**, when the app is a separate thing or another
+  employee's job: `create_employee` (see the bundled `build-an-app` skill). The result gives its id; `app_status` and the line every
 teammate reads ("<name> is an app; its files are served from `<path>`")
 give the folder the page is served from. Everything lives in that one app
 folder:
