@@ -19,6 +19,7 @@ folder:
 ├── agent.json       # config ({} is fine)
 ├── brief.md         # Phase 1 (never ships)
 ├── refs/            # boards and rejected candidates (never ship)
+│   (boards from generate_media land in ui/boards/; delete before publish)
 ├── src/             # source you write
 ├── package.json     # build deps (never ship)
 └── ui/              # what Nebo serves and what publishes
@@ -106,10 +107,15 @@ page is reloaded on every rebuild.
 In a bundled build, read it at runtime (`window.NeboAppSDK`); do not import
 a package for it.
 
-## Building with bun
+## Building
 
-Nebo ships bun as a runtime. Use `bun` on the path, or the bundled one at
-`/tmp/nebo-runtimes/bun` (`%TEMP%\nebo-runtimes\bun.exe` on Windows).
+Use bun when the bot has it (`bun` on the path, or the bundled one at
+`/tmp/nebo-runtimes/bun`, `%TEMP%\nebo-runtimes\bun.exe` on Windows). Cloud
+bots have node and npx but no bun (checked 2026-10-01); there, the same build
+is `npm init -y && npm i gsap lenis split-type` and
+`npx esbuild src/main.js --bundle --minify --format=esm --outdir=ui --entry-names=[name]-[hash] --asset-names=assets/[name]-[hash]`,
+and Tailwind is `npx @tailwindcss/cli -i src/app.css -o ui/app.css --minify`.
+Check with `command -v bun` first and use whichever exists.
 
 ```bash
 cd "<app folder>"

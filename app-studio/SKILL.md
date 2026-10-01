@@ -48,7 +48,7 @@ For a plain internal tool (a tracker, a form, a table the owner fills in),
 |---|-------|----------|------|
 | 0 | Intake | the owner's answers | one batched round, never a second |
 | 1 | Brief | `brief.md` in the app folder | no generic line, front-matter complete |
-| 2 | Boards | `refs/board-*.png` | every board looked at, template-looking ones redone |
+| 2 | Boards | `boards/*.png` (served folder; deleted before publish) | every board looked at, template-looking ones redone |
 | 3 | Assets | `ui/assets/*` | every planned asset exists and is used |
 | 4 | Build | `src/` built into `ui/` | the page matches the boards |
 | 5 | Motion | the signature effect, wired | responds to the person's input |
@@ -98,8 +98,10 @@ must differ from each on at least 4 of the 6 axes. The gate checks it.
 ### 2. Boards (the boards ARE the design)
 
 One generated image per screen or section, palette locked across all of
-them. Generate them with `generate_media(kind: "image", ...)` into the app's
-`refs/` folder (working files, never `ui/`). Then look at each one (read the
+them. Generate them with `generate_media(kind: "image", ..., into:
+"boards/<screen>.png")`. Boards are working files: the gate refuses to
+publish while `boards/` is still in the served folder, so delete it once the
+build matches them. Then look at each one (read the
 file; the vision helper describes it) and regenerate any that reads as a
 template: centered dark hero, glowing blob, three identical cards, beige
 serif "luxury". Budget two redos per board. How to pick the combination and
