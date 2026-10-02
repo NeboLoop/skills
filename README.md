@@ -14,15 +14,11 @@ skill-name/
 └── assets/           # Optional: templates, resources
 ```
 
-## Featured: App Studio
+## App Studio
 
-`app-studio/` is the method a Nebo employee follows to build an app or game
-that looks designed, not generated: one intake, a written brief, generated
-design boards and assets, a real build into the app's own folder, one
-signature effect, and a gate (`scripts/gate.js`, runs with bun or node) that
-must pass before publishing. Its references cover the film-scrub template
-proven on iPhone, games, and the Nebo app specifics (manifest window, the SDK
-global, hashed builds, size limits, publishing).
+App Studio is built into Nebo 0.16.7 and later as the bundled `app-studio`
+skill (nebo `crates/tools/src/skills/bundled/app-studio/`). `app-studio/` here
+is a stub so the marketplace listing carries no second set of instructions.
 
 ## License
 
