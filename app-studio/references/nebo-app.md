@@ -224,6 +224,31 @@ and load libraries from the CDN lines in `kit.md`.
 **React or three with React** builds the same way with an entry
 `src/main.jsx`; bun handles JSX.
 
+**Paths are relative to the page.** The page is served from a sub-path
+(`/apps/<id>/ui/` on the bot, `/t/<bot>/apps/<id>/ui/` on the owner's phone),
+never from a site's root, so `ui/index.html` points at `./main-<hash>.js` and
+`./assets/...`, and code loads files the same way (`fetch('assets/level.json')`,
+`loader.load('assets/bird.glb')`), never `/assets/...`.
+
+**With Vite** (a React or three template), set `base: './'` and build into
+`ui/`:
+
+```js
+// vite.config.ts, in the app folder
+export default defineConfig({
+  base: './',
+  build: { outDir: 'ui', emptyOutDir: true },
+});
+```
+
+Without `base: './'` Vite writes `/assets/...`; Nebo sends those to `ui/`
+from the entry page, stylesheets and `fetch`, but not from every load a
+script makes (an image `src` set in code, a dynamic import, a preloaded
+chunk). Only `ui/` is served: the `index.html` at the app folder's root is
+the build's source (`./src/main.tsx`) and never served, so never copy it into
+`ui/` by hand. Leave Vite's `type="module"` and `crossorigin` on the script
+tags; they load as they are, and stripping them breaks a module bundle.
+
 ## Developer tools
 
 An app the owner made (on this bot, not installed from the marketplace)
